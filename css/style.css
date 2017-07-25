@@ -1,0 +1,84 @@
+/*
+* Plugin Styles
+*/
+#dpm-wrap .display-post-metadata {
+    width: 100%;
+    list-style: none;
+    border: 1px solid #e5e7ee;
+    border-left: 0;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px;}
+
+
+#dpm-wrap .display-post-metadata:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+#dpm-wrap .display-post-metadata li {
+    float: left;
+    font-size: 16px;
+    font-weight: 300;
+    padding: 10px;
+    margin: 0;
+    border-left: 1px solid #e5e7ee; }
+
+#dpm-wrap .display-post-metadata li.date-meta span {
+    display: inline-block; margin-top: 2px; }
+
+#dpm-wrap .display-post-metadata li img {
+    width: 22px;
+    margin-right: 5px;
+    vertical-align: middle; }
+
+#dpm-wrap .display-post-metadata li span {
+    vertical-align: middle; }
+
+#dpm-wrap ul.dpm-custom-fields {
+    list-style: none;
+    border-top: 1px solid #f1f1f1;
+    margin: 10px 0 20px 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* Custom fields styles */
+#dpm-wrap ul.dpm-custom-fields li {
+    color: #8B9293;
+    padding: 6px 5px 6px 10px;
+    border-bottom: 1px solid #eee;
+    margin: 0;
+}
+
+#dpm-wrap ul.dpm-custom-fields li:hover {
+    background-color: #f1f1f1;
+}
+
+#dpm-wrap ul.dpm-custom-fields li strong {
+    display: inline-block;
+    font-weight: 500;
+    color: #394041;
+    margin-right: 10px;
+}
+
+/* Responsive styles */
+@media only screen and (min-width: 495px) and (max-width: 515px) {
+    #dpm-wrap .display-post-metadata li { padding: 8px; }
+}
+
+@media only screen and (min-width: 345px) and (max-width: 495px) {
+    #dpm-wrap .display-post-metadata li.date-meta span {
+        display: inline-block; margin-top: 0; }
+    #dpm-wrap .display-post-metadata li { border: 1px solid #e5e7ee; width: 50%; }
+    #dpm-wrap .display-post-metadata { border-left: 1px solid #e5e7ee; }
+}
+
+@media only screen and (max-width: 345px) {
+    #dpm-wrap .display-post-metadata li { width: 100%; border-bottom: 1px solid #e5e7ee; }
+    #dpm-wrap .display-post-metadata { border-bottom: 0; }
+}
