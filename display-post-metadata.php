@@ -5,7 +5,7 @@
  * Description: Allows you to display posts and pages metadata information and custom fields.
  * Version: 1.2.0
  * Author: Fahid Javid
- * Author URI: https://fahidjavid.com
+ * Author URI: https://www.fahidjavid.com
  * License: GPL2+
  * Text Domain: display-post-metadata
  * Domain Path: /languages/
