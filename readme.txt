@@ -1,7 +1,7 @@
 === Display Post Metadata ===
 Contributors: fahidjavid
 Tags: post, page, custom post type, meta, metadata, meta information, custom fields, shortcode
-Requires at least: 3.0
+Requires at least: 4.0
 Tested up to: 5.4.1
 Stable tag: trunk
 License: GPLv2 or later
