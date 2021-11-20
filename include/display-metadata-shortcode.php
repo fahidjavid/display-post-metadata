@@ -128,7 +128,7 @@ class Display_Metadata_Shortcode{
                  * @param string $key   Meta key.
                  * @param string $value Meta value.
                  */
-                echo apply_filters( 'the_meta_key', "<li><strong class='post-meta-key'>$key:</strong> <span class='meta-value'>$value</span> </li>\n", $key, $value );
+	            echo apply_filters( 'the_meta_key', "<li><strong class='post-meta-key'>" . esc_html( $key ) . ":</strong> <span class='meta-value'>" . esc_html( $value ) . "</span> </li>\n", $key, $value );
             }
             echo "</ul>\n";
         }

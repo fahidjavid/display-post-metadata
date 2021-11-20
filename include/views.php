@@ -8,7 +8,8 @@ function display_pmd_getPostViews( $postID ){
         add_post_meta($postID, $count_key, '0');
         return '0 '. __( 'View', 'display-post-metadata');
     }
-    return $count . ' ' . __( 'Views', 'display-post-metadata');
+
+	return intval( $count ) . ' ' . __( 'Views', 'display-post-metadata' );
 }
 function display_pmd_setPostViews( $postID ) {
     $count_key = 'post_views_count';
