@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Display Post Metadata\n"
-"POT-Creation-Date: 2021-04-17 21:21+0500\n"
+"POT-Creation-Date: 2021-11-20 13:08+0500\n"
 "PO-Revision-Date: 2016-07-27 14:03+0500\n"
 "Last-Translator: \n"
 "Language-Team: Fahid Javid <fahidjavid@gmail.com>\n"
@@ -37,6 +37,6 @@ msgstr ""
 msgid "View"
 msgstr ""
 
-#: include/views.php:11
+#: include/views.php:12
 msgid "Views"
 msgstr ""
