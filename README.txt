@@ -3,7 +3,7 @@ Contributors: fahidjavid
 Tags: post, page, custom post type, meta, metadata, meta information, custom fields, shortcode
 Requires at least: 4.0
 Tested up to: 5.8.2
-Stable tag: trunk
+Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
