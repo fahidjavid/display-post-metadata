@@ -2,8 +2,8 @@
 Contributors: fahidjavid
 Tags: post, page, custom post type, meta, metadata, meta information, custom fields, shortcode
 Requires at least: 4.0
-Tested up to: 6.0.3
-Stable tag: 1.5.2
+Tested up to: 6.2
+Stable tag: 1.5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,7 +36,7 @@ Instructions for installing the Display Post Metadata Plugin.
 3. In the list of Plugins click Install Now next to the Display Post Metadata.
 4. Once installed click to activate.
 5. Now go to any page, post or custom post type and edit it.
-6. While editing you can put the shortcode to display the metadata information. The shortcode is [metadata element="date,author,comments,sticky,views,custom_fields"]
+6. While editing, you can put the shortcode to display the metadata information. The shortcode is [metadata element="date,author,comments,sticky,views,custom_fields"]
 
 == Frequently Asked Questions ==
 
@@ -53,6 +53,10 @@ Yes, it works with all major PHP versions and I have tested it with PHP version 
 2. Custom Fields list is displayed.
 
 == Changelog ==
+
+= 1.5.3 =
+* Updated language file
+* Tested with WordPress 6.2
 
 = 1.5.2 =
 * Tested with WordPress 6.0.3
