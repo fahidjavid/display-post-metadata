@@ -1,9 +1,10 @@
 === Display Post Metadata ===
 Contributors: fahidjavid
 Tags: post, page, custom post type, meta, metadata, meta information, custom fields, shortcode
-Requires at least: 5.0
-Tested up to: 6.7.1
-Stable tag: 1.5.4
+Tested up to: 6.9
+Requires at least: 6.0
+Requires PHP: 8.3
+Stable tag: 1.5.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +54,13 @@ Yes, it works with all major PHP versions and I have tested it with PHP version 
 2. Custom Fields list is displayed.
 
 == Changelog ==
+
+= 1.5.5 =
+* WordPress 6.9 compatibility confirmed
+* Updated minimum WP requirement to 6.0
+* Updated minimum PHP requirement to 8.3 (recommended by WordPress.org)
+* Updated translation files for multilingual support
+* General code improvements
 
 = 1.5.4 =
 * Updated language file
