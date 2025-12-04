@@ -3,10 +3,10 @@
  * Plugin Name: Display Post Metadata
  * Plugin URI: https://fahidjavid.com
  * Description: Allows you to display posts and pages metadata information and custom fields.
- * Version: 1.5.4
- * Tested up to: 6.7.1
- * Requires at least: 5.0
- * Requires PHP: 7.4
+ * Version: 1.5.5
+ * Tested up to: 6.9
+ * Requires at least: 6.0
+ * Requires PHP: 8.3
  * Author: Fahid Javid
  * Author URI: https://www.fahidjavid.com
  * Text Domain: display-post-metadata
