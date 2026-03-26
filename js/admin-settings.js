@@ -1,9 +1,11 @@
 /**
  * Display Post Metadata — Admin Settings JS
  *
- * - Initialises wp-color-picker on all .dpm-color-picker inputs.
- * - Updates the live preview when any style setting changes.
- * - Drives the tab switcher.
+ * - Tab switching
+ * - wp-color-picker initialisation + live preview sync
+ * - Range slider sync (label + hidden input + CSS var)
+ * - Design variation preview sync (radio → .dpm-design-variation class)
+ * - Copy-to-clipboard for shortcode reference
  */
 ( function ( $ ) {
 
@@ -27,35 +29,24 @@
 	// -----------------------------------------------------------------------
 	var $preview = $( '#dpm-preview-container' );
 
-	/**
-	 * Apply a CSS custom property to the preview container.
-	 *
-	 * @param {string} prop   CSS variable name, e.g. '--dpm-text-color'.
-	 * @param {string} value  Value to set.
-	 */
 	function applyVar( prop, value ) {
 		if ( $preview.length ) {
-			$preview[ 0 ].style.setProperty( prop, value );
+			if ( value ) {
+				$preview[ 0 ].style.setProperty( prop, value );
+			} else {
+				$preview[ 0 ].style.removeProperty( prop );
+			}
 		}
 	}
 
-	/**
-	 * Update the design variation class on the preview container.
-	 *
-	 * @param {string} variation  e.g. 'default', 'card', 'inline', 'minimal'.
-	 */
 	function applyDesign( variation ) {
 		if ( ! $preview.length ) return;
-
-		var designs = [ 'dpm-design-default', 'dpm-design-inline', 'dpm-design-card', 'dpm-design-minimal' ];
-		designs.forEach( function ( cls ) {
-			$preview.removeClass( cls );
-		} );
-		$preview.addClass( 'dpm-design-' + variation );
+		var classes = $preview[ 0 ].className.replace( /dpm-design-\S+/g, '' ).trim();
+		$preview[ 0 ].className = classes + ' dpm-design-' + variation;
 	}
 
 	// -----------------------------------------------------------------------
-	// Initialise color pickers
+	// Color pickers
 	// -----------------------------------------------------------------------
 	$( '.dpm-color-picker' ).wpColorPicker( {
 		change: function ( event, ui ) {
@@ -73,23 +64,65 @@
 	} );
 
 	// -----------------------------------------------------------------------
-	// Numeric inputs — font size, icon size, border radius
+	// Range sliders
+	// Syncs: range input → value badge → hidden input → CSS var on preview
 	// -----------------------------------------------------------------------
 	$( '.dpm-range-control' ).on( 'input change', function () {
-		var cssVar = $( this ).data( 'var' );
-		var unit   = $( this ).data( 'unit' ) || 'px';
-		var val    = parseInt( $( this ).val(), 10 );
+		var $range  = $( this );
+		var cssVar  = $range.data( 'var' );
+		var unit    = $range.data( 'unit' ) || 'px';
+		var target  = $range.data( 'target' );
+		var val     = parseInt( $range.val(), 10 );
 
-		if ( cssVar && ! isNaN( val ) && val > 0 ) {
+		if ( isNaN( val ) ) return;
+
+		// Update the badge (e.g. #dpm_font_size_val)
+		$( '#' + target + '_val' ).text( val + unit );
+
+		// Update the hidden input that gets submitted
+		$( '#' + target ).val( val );
+
+		// Update CSS var on preview
+		if ( cssVar ) {
 			applyVar( cssVar, val + unit );
 		}
 	} );
 
 	// -----------------------------------------------------------------------
-	// Design variation select
+	// Design variation radio cards → live preview
 	// -----------------------------------------------------------------------
-	$( '#dpm_design_variation' ).on( 'change', function () {
+	$( 'input[name="dpm_settings[design_variation]"]' ).on( 'change', function () {
 		applyDesign( $( this ).val() );
 	} );
+
+	// -----------------------------------------------------------------------
+	// Copy shortcode to clipboard
+	// -----------------------------------------------------------------------
+	$( '#dpm-copy-sc' ).on( 'click', function () {
+		var $btn  = $( this );
+		var text  = $( '#dpm-sc-code' ).text();
+
+		if ( navigator.clipboard ) {
+			navigator.clipboard.writeText( text ).then( function () {
+				onCopied( $btn );
+			} );
+		} else {
+			// Fallback
+			var $tmp = $( '<textarea>' ).val( text ).appendTo( 'body' ).select();
+			document.execCommand( 'copy' );
+			$tmp.remove();
+			onCopied( $btn );
+		}
+	} );
+
+	function onCopied( $btn ) {
+		var orig = $btn.html();
+		$btn.addClass( 'copied' )
+			.html( '<span class="dashicons dashicons-yes"></span> Copied!' );
+
+		setTimeout( function () {
+			$btn.removeClass( 'copied' ).html( orig );
+		}, 2000 );
+	}
 
 } )( jQuery );

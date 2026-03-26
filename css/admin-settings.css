@@ -1,72 +1,184 @@
 /*
- * Display Post Metadata — Admin Settings Page Styles
+ * Display Post Metadata — Admin Settings Page
  * Version: 2.0.0
+ *
+ * Design system variables kept in .dpm-settings-wrap so nothing
+ * leaks into other admin pages.
  */
 
-/* =========================================================================
-   Page wrapper
-   ========================================================================= */
+.dpm-settings-wrap {
+	--dpm-a-accent:       #2271b1;
+	--dpm-a-accent-dark:  #135e96;
+	--dpm-a-accent-light: #e8f0fb;
+	--dpm-a-bg:           #f6f7fb;
+	--dpm-a-card:         #ffffff;
+	--dpm-a-border:       #e2e5ed;
+	--dpm-a-text:         #1d2327;
+	--dpm-a-muted:        #6b7280;
+	--dpm-a-success:      #00a32a;
+	--dpm-a-radius:       10px;
+	--dpm-a-shadow:       0 1px 4px rgba(0,0,0,.07), 0 4px 16px rgba(0,0,0,.05);
 
-.dpm-settings-wrap h1 {
-	margin-bottom: 4px;
+	max-width: 1120px;
+	padding-bottom: 60px;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-.dpm-settings-wrap .dpm-tagline {
-	color:         #666;
-	margin-top:    0;
+/* =========================================================================
+   HEADER BANNER
+   ========================================================================= */
+
+.dpm-header {
+	background:    linear-gradient(135deg, #1d2327 0%, #2c3338 60%, #2271b1 100%);
+	border-radius: var(--dpm-a-radius);
+	margin:        16px 0 28px;
+	padding:       28px 32px;
+	display:       flex;
+	align-items:   center;
+	gap:           20px;
+	position:      relative;
+	overflow:      hidden;
+}
+
+.dpm-header::before {
+	content:       '';
+	position:      absolute;
+	top:           -40px;
+	right:         -40px;
+	width:         220px;
+	height:        220px;
+	background:    radial-gradient(circle, rgba(255,255,255,.06) 0%, transparent 70%);
+	border-radius: 50%;
+	pointer-events:none;
+}
+
+.dpm-header-icon {
+	width:         56px;
+	height:        56px;
+	background:    rgba(255,255,255,.12);
+	border:        1px solid rgba(255,255,255,.2);
+	border-radius: 14px;
+	display:       flex;
+	align-items:   center;
+	justify-content: center;
+	flex-shrink:   0;
+}
+
+.dpm-header-icon .dashicons {
+	color:     #fff;
+	font-size: 26px;
+	width:     26px;
+	height:    26px;
+}
+
+.dpm-header-text {
+	flex: 1;
+}
+
+.dpm-header-text h1 {
+	color:       #fff;
+	font-size:   22px;
+	font-weight: 700;
+	margin:      0 0 4px;
+	padding:     0;
+	line-height: 1.2;
+}
+
+.dpm-header-text p {
+	color:       rgba(255,255,255,.7);
+	font-size:   13px;
+	margin:      0;
+}
+
+.dpm-version-badge {
+	background:    rgba(255,255,255,.15);
+	border:        1px solid rgba(255,255,255,.25);
+	border-radius: 20px;
+	color:         rgba(255,255,255,.9);
+	font-size:     11px;
+	font-weight:   600;
+	letter-spacing:.5px;
+	padding:       4px 12px;
+	text-transform:uppercase;
+	white-space:   nowrap;
+}
+
+/* =========================================================================
+   NOTICES
+   ========================================================================= */
+
+.dpm-settings-wrap .notice,
+.dpm-settings-wrap .updated,
+.dpm-settings-wrap .error {
+	border-radius: var(--dpm-a-radius);
+	border-left-width: 4px;
 	margin-bottom: 20px;
 }
 
 /* =========================================================================
-   Tabs
+   TAB NAVIGATION
    ========================================================================= */
 
 .dpm-tabs {
-	display:       flex;
-	gap:           0;
-	border-bottom: 1px solid #c3c4c7;
-	margin-bottom: 0;
-	margin-top:    16px;
+	display:    flex;
+	gap:        6px;
+	margin:     0 0 -1px;
+	padding:    0;
+	border:     none;
+	background: none;
 }
 
 .dpm-tab {
-	background:    #f0f0f1;
-	border:        1px solid #c3c4c7;
-	border-bottom: none;
-	border-radius: 3px 3px 0 0;
-	color:         #3c434a;
+	background:    var(--dpm-a-card);
+	border:        1.5px solid var(--dpm-a-border);
+	border-radius: 8px 8px 0 0;
+	color:         var(--dpm-a-muted);
 	cursor:        pointer;
-	font-size:     14px;
-	margin-right:  4px;
-	padding:       8px 18px;
+	display:       inline-flex;
+	align-items:   center;
+	gap:           6px;
+	font-size:     13.5px;
+	font-weight:   500;
+	padding:       10px 20px;
 	position:      relative;
-	bottom:        -1px;
-	transition:    background 0.12s ease, color 0.12s ease;
+	bottom:        0;
+	transition:    color .15s, background .15s, border-color .15s;
+	line-height:   1;
+}
+
+.dpm-tab .dashicons {
+	font-size: 15px;
+	width:     15px;
+	height:    15px;
+	color:     inherit;
 }
 
 .dpm-tab:hover {
-	background: #fff;
-	color:      #0073aa;
+	background:   var(--dpm-a-accent-light);
+	border-color: #c5d9f2;
+	color:        var(--dpm-a-accent);
 }
 
 .dpm-tab.active {
-	background:    #fff;
-	border-bottom: 1px solid #fff;
-	color:         #0073aa;
-	font-weight:   600;
+	background:   var(--dpm-a-card);
+	border-color: var(--dpm-a-border);
+	border-bottom-color: var(--dpm-a-card);
+	color:        var(--dpm-a-accent);
+	font-weight:  600;
+	z-index:      2;
 }
 
 /* =========================================================================
-   Tab panels
+   TAB PANELS
    ========================================================================= */
 
 .dpm-tab-panel {
-	display:       none;
-	background:    #fff;
-	border:        1px solid #c3c4c7;
-	border-top:    none;
-	padding:       20px 24px;
-	margin-bottom: 20px;
+	display:        none;
+	background:     var(--dpm-a-bg);
+	border:         1.5px solid var(--dpm-a-border);
+	border-radius:  0 var(--dpm-a-radius) var(--dpm-a-radius) var(--dpm-a-radius);
+	padding:        28px;
+	margin-bottom:  20px;
 }
 
 .dpm-tab-panel.active {
@@ -74,114 +186,881 @@
 }
 
 /* =========================================================================
-   Element checkboxes
+   CARDS
    ========================================================================= */
 
-.dpm-checkbox-label {
-	display:      inline-flex;
-	align-items:  center;
-	gap:          6px;
-	margin-right: 14px;
-	margin-bottom: 6px;
-	font-size:    14px;
-	cursor:       pointer;
+.dpm-card {
+	background:    var(--dpm-a-card);
+	border:        1.5px solid var(--dpm-a-border);
+	border-radius: var(--dpm-a-radius);
+	box-shadow:    var(--dpm-a-shadow);
+	margin-bottom: 20px;
+	overflow:      hidden;
 }
 
-.dpm-checkbox-label input[type="checkbox"] {
-	margin: 0;
+.dpm-card:last-child {
+	margin-bottom: 0;
+}
+
+.dpm-card-header {
+	align-items:   center;
+	border-bottom: 1.5px solid var(--dpm-a-border);
+	display:       flex;
+	gap:           14px;
+	padding:       18px 22px;
+}
+
+.dpm-card-header-icon {
+	align-items:    center;
+	background:     var(--dpm-a-accent-light);
+	border-radius:  8px;
+	color:          var(--dpm-a-accent);
+	display:        flex;
+	flex-shrink:    0;
+	height:         36px;
+	justify-content:center;
+	width:          36px;
+}
+
+.dpm-card-header-icon .dashicons {
+	color:     var(--dpm-a-accent);
+	font-size: 18px;
+	width:     18px;
+	height:    18px;
+}
+
+.dpm-card-header-text h2 {
+	color:       var(--dpm-a-text);
+	font-size:   14px;
+	font-weight: 600;
+	margin:      0 0 2px;
+	padding:     0;
+	border:      none;
+}
+
+.dpm-card-header-text p {
+	color:     var(--dpm-a-muted);
+	font-size: 12px;
+	margin:    0;
+}
+
+.dpm-card-body {
+	padding: 22px;
 }
 
 /* =========================================================================
-   Style tab two-column layout
+   CHIP CHECKBOXES (element picker)
+   ========================================================================= */
+
+.dpm-chips {
+	display:   flex;
+	flex-wrap: wrap;
+	gap:       10px;
+}
+
+.dpm-chip {
+	cursor: pointer;
+}
+
+.dpm-chip input[type="checkbox"] {
+	position: absolute;
+	opacity:  0;
+	width:    0;
+	height:   0;
+}
+
+.dpm-chip-label {
+	align-items:   center;
+	border:        1.5px solid var(--dpm-a-border);
+	border-radius: 20px;
+	color:         var(--dpm-a-muted);
+	cursor:        pointer;
+	display:       inline-flex;
+	font-size:     13px;
+	font-weight:   500;
+	gap:           5px;
+	padding:       7px 16px;
+	transition:    background .15s, border-color .15s, color .15s;
+	user-select:   none;
+}
+
+.dpm-chip-label .dashicons {
+	font-size: 13px;
+	width:     13px;
+	height:    13px;
+}
+
+.dpm-chip input[type="checkbox"]:checked + .dpm-chip-label {
+	background:   var(--dpm-a-accent);
+	border-color: var(--dpm-a-accent);
+	color:        #fff;
+}
+
+.dpm-chip input[type="checkbox"]:focus-visible + .dpm-chip-label {
+	outline:        2px solid var(--dpm-a-accent);
+	outline-offset: 2px;
+}
+
+.dpm-chip-label:hover {
+	border-color: var(--dpm-a-accent);
+	color:        var(--dpm-a-accent);
+}
+
+.dpm-chip input[type="checkbox"]:checked + .dpm-chip-label:hover {
+	background:   var(--dpm-a-accent-dark);
+	border-color: var(--dpm-a-accent-dark);
+	color:        #fff;
+}
+
+/* =========================================================================
+   DESIGN VARIATION CARDS
+   ========================================================================= */
+
+.dpm-design-grid {
+	display:               grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap:                   12px;
+}
+
+@media (max-width: 800px) {
+	.dpm-design-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.dpm-design-option {
+	cursor: pointer;
+}
+
+.dpm-design-option input[type="radio"] {
+	position: absolute;
+	opacity:  0;
+	width:    0;
+	height:   0;
+}
+
+.dpm-design-card-inner {
+	border:        1.5px solid var(--dpm-a-border);
+	border-radius: 10px;
+	overflow:      hidden;
+	transition:    border-color .15s, box-shadow .15s;
+	display:       flex;
+	flex-direction:column;
+}
+
+.dpm-design-option:hover .dpm-design-card-inner {
+	border-color: var(--dpm-a-accent);
+	box-shadow:   0 0 0 3px var(--dpm-a-accent-light);
+}
+
+.dpm-design-option input[type="radio"]:checked + .dpm-design-card-inner {
+	border-color: var(--dpm-a-accent);
+	box-shadow:   0 0 0 3px var(--dpm-a-accent-light);
+}
+
+.dpm-design-preview {
+	background:    #f8f9fb;
+	border-bottom: 1px solid var(--dpm-a-border);
+	display:       flex;
+	align-items:   center;
+	justify-content: center;
+	height:        72px;
+	padding:       10px;
+	position:      relative;
+}
+
+.dpm-design-option input[type="radio"]:checked + .dpm-design-card-inner .dpm-design-preview {
+	background: var(--dpm-a-accent-light);
+}
+
+/* Checked indicator */
+.dpm-design-card-inner::after {
+	content:     '';
+	position:    absolute;
+	top:         8px;
+	right:       8px;
+	width:       0;
+	height:      0;
+	border-radius: 50%;
+	background:  var(--dpm-a-accent);
+	transition:  width .15s, height .15s;
+}
+
+.dpm-design-option {
+	position: relative;
+}
+
+.dpm-design-option input[type="radio"]:checked ~ .dpm-design-checked {
+	display: flex;
+}
+
+.dpm-design-checked {
+	display:        none;
+	position:       absolute;
+	top:            8px;
+	right:          8px;
+	width:          20px;
+	height:         20px;
+	background:     var(--dpm-a-accent);
+	border-radius:  50%;
+	align-items:    center;
+	justify-content:center;
+	z-index:        1;
+}
+
+.dpm-design-checked .dashicons {
+	color:     #fff;
+	font-size: 12px;
+	width:     12px;
+	height:    12px;
+}
+
+.dpm-design-label {
+	padding:    10px 12px;
+	display:    flex;
+	flex-direction: column;
+	gap:        2px;
+}
+
+.dpm-design-label strong {
+	color:     var(--dpm-a-text);
+	font-size: 12.5px;
+}
+
+.dpm-design-label span {
+	color:     var(--dpm-a-muted);
+	font-size: 11px;
+}
+
+/* --- Visual previews using CSS shapes --- */
+
+/* Default: horizontal bordered strip */
+.dpm-dp-default {
+	display:       flex;
+	border:        1.5px solid var(--dpm-a-accent);
+	border-radius: 4px;
+	overflow:      hidden;
+	width:         100%;
+	height:        26px;
+	opacity:       .55;
+}
+
+.dpm-dp-default span {
+	flex:        1;
+	border-left: 1px solid var(--dpm-a-accent);
+	display:     flex;
+	align-items: center;
+	padding-left:5px;
+}
+
+.dpm-dp-default span::before {
+	content:       '';
+	display:       block;
+	width:         6px;
+	height:        6px;
+	border-radius: 50%;
+	background:    var(--dpm-a-accent);
+	margin-right:  3px;
+	flex-shrink:   0;
+}
+
+.dpm-dp-default span::after {
+	content:       '';
+	display:       block;
+	flex:          1;
+	height:        2px;
+	border-radius: 1px;
+	background:    var(--dpm-a-accent);
+	opacity:       .4;
+}
+
+.dpm-dp-default span:first-child {
+	border-left: none;
+}
+
+/* Inline: text-like byline */
+.dpm-dp-inline {
+	display:     flex;
+	align-items: center;
+	gap:         5px;
+	width:       100%;
+	justify-content: center;
+	opacity:     .6;
+}
+
+.dpm-dp-inline span {
+	display:     flex;
+	align-items: center;
+	gap:         3px;
+}
+
+.dpm-dp-inline span::before {
+	content:       '';
+	display:       block;
+	width:         5px;
+	height:        5px;
+	border-radius: 50%;
+	background:    var(--dpm-a-accent);
+	flex-shrink:   0;
+}
+
+.dpm-dp-inline span::after {
+	content:       '';
+	display:       block;
+	width:         20px;
+	height:        2px;
+	border-radius: 1px;
+	background:    var(--dpm-a-accent);
+}
+
+.dpm-dp-inline em {
+	color:       var(--dpm-a-accent);
+	font-style:  normal;
+	font-size:   14px;
+	line-height: 1;
+}
+
+/* Card: vertical with shadow */
+.dpm-dp-card {
+	display:       flex;
+	flex-direction:column;
+	gap:           5px;
+	padding:       8px 10px;
+	border:        1.5px solid var(--dpm-a-accent);
+	border-radius: 6px;
+	box-shadow:    0 2px 8px rgba(34, 113, 177, .2);
+	width:         80%;
+	opacity:       .6;
+}
+
+.dpm-dp-card span {
+	height:        5px;
+	background:    var(--dpm-a-accent);
+	border-radius: 2px;
+	opacity:       .5;
+	border-left:   3px solid var(--dpm-a-accent);
+	padding-left:  4px;
+}
+
+.dpm-dp-card span:nth-child(1) { width: 90%; opacity: .7; }
+.dpm-dp-card span:nth-child(2) { width: 70%; opacity: .5; }
+.dpm-dp-card span:nth-child(3) { width: 80%; opacity: .4; }
+
+/* Minimal: pill badges */
+.dpm-dp-minimal {
+	display:     flex;
+	flex-wrap:   wrap;
+	gap:         4px;
+	justify-content: center;
+	opacity:     .65;
+	width:       100%;
+}
+
+.dpm-dp-minimal span {
+	border:        1.5px solid var(--dpm-a-accent);
+	border-radius: 20px;
+	display:       flex;
+	align-items:   center;
+	gap:           3px;
+	padding:       2px 8px;
+}
+
+.dpm-dp-minimal span::before {
+	content:       '';
+	display:       block;
+	width:         5px;
+	height:        5px;
+	border-radius: 50%;
+	background:    var(--dpm-a-accent);
+	flex-shrink:   0;
+}
+
+.dpm-dp-minimal span::after {
+	content:       '';
+	display:       block;
+	width:         16px;
+	height:        2px;
+	border-radius: 1px;
+	background:    var(--dpm-a-accent);
+	opacity:       .5;
+}
+
+/* =========================================================================
+   TOGGLE SWITCHES (boolean settings)
+   ========================================================================= */
+
+.dpm-toggle-row {
+	align-items:   center;
+	display:       flex;
+	gap:           16px;
+	padding:       16px 0;
+	border-bottom: 1px solid var(--dpm-a-border);
+}
+
+.dpm-toggle-row:first-child {
+	padding-top: 0;
+}
+
+.dpm-toggle-row:last-child {
+	border-bottom: none;
+	padding-bottom: 0;
+}
+
+.dpm-toggle-text {
+	flex: 1;
+}
+
+.dpm-toggle-text strong {
+	color:       var(--dpm-a-text);
+	display:     block;
+	font-size:   13.5px;
+	font-weight: 600;
+	margin-bottom: 3px;
+}
+
+.dpm-toggle-text p {
+	color:     var(--dpm-a-muted);
+	font-size: 12px;
+	margin:    0;
+}
+
+/* iOS-style toggle */
+.dpm-toggle-switch {
+	position:   relative;
+	flex-shrink: 0;
+}
+
+.dpm-toggle-switch input[type="checkbox"] {
+	cursor:    pointer;
+	height:    26px;
+	margin:    0;
+	opacity:   0;
+	position:  absolute;
+	width:     46px;
+	z-index:   1;
+}
+
+.dpm-toggle-track {
+	background:    #c3c4c7;
+	border-radius: 13px;
+	display:       block;
+	height:        26px;
+	position:      relative;
+	transition:    background .2s;
+	width:         46px;
+	pointer-events:none;
+}
+
+.dpm-toggle-track::after {
+	background:    #fff;
+	border-radius: 50%;
+	box-shadow:    0 1px 4px rgba(0,0,0,.25);
+	content:       '';
+	height:        20px;
+	left:          3px;
+	position:      absolute;
+	top:           3px;
+	transition:    left .2s;
+	width:         20px;
+}
+
+.dpm-toggle-switch input[type="checkbox"]:checked + .dpm-toggle-track {
+	background: var(--dpm-a-accent);
+}
+
+.dpm-toggle-switch input[type="checkbox"]:checked + .dpm-toggle-track::after {
+	left: 23px;
+}
+
+/* =========================================================================
+   FIELD ROWS (generic label + control layout)
+   ========================================================================= */
+
+.dpm-field-row {
+	align-items:   start;
+	border-bottom: 1px solid var(--dpm-a-border);
+	display:       grid;
+	gap:           12px;
+	grid-template-columns: 160px 1fr;
+	padding:       16px 0;
+}
+
+.dpm-field-row:first-child { padding-top: 0; }
+.dpm-field-row:last-child  { border-bottom: none; padding-bottom: 0; }
+
+.dpm-field-label {
+	color:       var(--dpm-a-text);
+	font-size:   13px;
+	font-weight: 600;
+	padding-top: 2px;
+}
+
+.dpm-field-desc {
+	color:     var(--dpm-a-muted);
+	font-size: 12px;
+	margin:    5px 0 0;
+}
+
+.dpm-number-input {
+	align-items:   center;
+	border:        1.5px solid var(--dpm-a-border);
+	border-radius: 7px;
+	display:       inline-flex;
+	overflow:      hidden;
+	width:         120px;
+}
+
+.dpm-number-input input[type="number"] {
+	background: transparent;
+	border:     none;
+	box-shadow: none;
+	color:      var(--dpm-a-text);
+	font-size:  13px;
+	font-weight:600;
+	margin:     0;
+	padding:    6px 8px;
+	width:      70px;
+	outline:    none;
+}
+
+.dpm-number-unit {
+	align-items:    center;
+	background:     var(--dpm-a-bg);
+	border-left:    1.5px solid var(--dpm-a-border);
+	color:          var(--dpm-a-muted);
+	display:        flex;
+	font-size:      12px;
+	justify-content:center;
+	padding:        0 8px;
+	height:         36px;
+}
+
+.dpm-inline-label {
+	align-items: center;
+	display:     flex;
+	gap:         6px;
+}
+
+/* =========================================================================
+   STYLE TAB LAYOUT
    ========================================================================= */
 
 .dpm-style-layout {
-	display:   grid;
-	grid-template-columns: 1fr 1fr;
-	gap:       32px;
-	align-items: start;
+	align-items:           start;
+	display:               grid;
+	gap:                   24px;
+	grid-template-columns: 1fr 380px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 960px) {
 	.dpm-style-layout {
 		grid-template-columns: 1fr;
 	}
 }
 
-.dpm-style-controls .form-table {
-	margin-top: 0;
+/* =========================================================================
+   COLOR GRID
+   ========================================================================= */
+
+.dpm-color-grid {
+	display:               grid;
+	gap:                   20px;
+	grid-template-columns: 1fr 1fr;
 }
 
-.dpm-style-controls .form-table th {
-	width: 160px;
+@media (max-width: 600px) {
+	.dpm-color-grid { grid-template-columns: 1fr; }
+}
+
+.dpm-color-field label {
+	color:       var(--dpm-a-text);
+	display:     block;
+	font-size:   12.5px;
+	font-weight: 600;
+	margin-bottom: 8px;
+}
+
+/* Compact the color picker button */
+.dpm-color-field .wp-color-result {
+	width: 100% !important;
+	height: 38px !important;
+	border-radius: 7px !important;
+	border: 1.5px solid var(--dpm-a-border) !important;
+}
+
+.dpm-color-field .wp-color-result-text {
+	background: rgba(0,0,0,.15) !important;
 }
 
 /* =========================================================================
-   Live preview panel
+   SIZE SLIDERS
+   ========================================================================= */
+
+.dpm-size-fields {
+	display:   flex;
+	flex-direction: column;
+	gap:       16px;
+	padding-top: 20px;
+	border-top: 1px solid var(--dpm-a-border);
+	margin-top: 20px;
+}
+
+.dpm-slider-row {
+	display:       grid;
+	align-items:   center;
+	gap:           12px;
+	grid-template-columns: 120px 1fr 56px;
+}
+
+.dpm-slider-row label {
+	color:       var(--dpm-a-text);
+	font-size:   12.5px;
+	font-weight: 600;
+}
+
+.dpm-slider-row input[type="range"] {
+	accent-color:  var(--dpm-a-accent);
+	cursor:        pointer;
+	height:        4px;
+	width:         100%;
+}
+
+.dpm-slider-value {
+	align-items:    center;
+	background:     var(--dpm-a-bg);
+	border:         1.5px solid var(--dpm-a-border);
+	border-radius:  6px;
+	color:          var(--dpm-a-accent);
+	display:        flex;
+	font-size:      12px;
+	font-weight:    600;
+	height:         30px;
+	justify-content:center;
+	text-align:     center;
+}
+
+/* =========================================================================
+   LIVE PREVIEW
    ========================================================================= */
 
 .dpm-style-preview {
-	position:   sticky;
-	top:        40px;
+	position: sticky;
+	top:      40px;
 }
 
-.dpm-style-preview h3 {
-	margin-top: 0;
+.dpm-preview-browser {
+	border:        1.5px solid var(--dpm-a-border);
+	border-radius: 8px;
+	overflow:      hidden;
+}
+
+.dpm-preview-bar {
+	align-items:    center;
+	background:     var(--dpm-a-bg);
+	border-bottom:  1px solid var(--dpm-a-border);
+	display:        flex;
+	gap:            6px;
+	padding:        10px 14px;
+}
+
+.dpm-preview-bar span {
+	background:    #e5e5e5;
+	border-radius: 50%;
+	height:        10px;
+	width:         10px;
+}
+
+.dpm-preview-bar span:nth-child(1) { background: #ff5f57; }
+.dpm-preview-bar span:nth-child(2) { background: #ffbd2e; }
+.dpm-preview-bar span:nth-child(3) { background: #28c840; }
+
+.dpm-preview-url {
+	flex:          1;
+	background:    #fff;
+	border:        1px solid var(--dpm-a-border);
+	border-radius: 4px;
+	color:         var(--dpm-a-muted);
+	font-size:     11px;
+	height:        22px;
+	line-height:   22px;
+	padding:       0 10px;
+	overflow:      hidden;
+	text-overflow: ellipsis;
+	white-space:   nowrap;
+}
+
+.dpm-preview-content {
+	background: #fff;
+	padding:    20px 16px;
+}
+
+/* Mocked post title line */
+.dpm-preview-content::before {
+	content:       '';
+	display:       block;
+	height:        10px;
+	background:    #eee;
+	border-radius: 3px;
+	margin-bottom: 14px;
+	width:         70%;
 }
 
 #dpm-preview-container {
-	border:        1px solid #ddd;
-	border-radius: 4px;
-	padding:       16px;
-	min-height:    60px;
-	background:    #fafafa;
+	/* CSS vars are applied inline — no default here */
 }
 
 #dpm-preview-container .display-post-metadata {
 	flex-wrap: wrap;
 }
 
-.dpm-style-preview .description {
-	margin-top: 8px;
-	color:      #888;
-	font-style: italic;
+.dpm-preview-hint {
+	color:       var(--dpm-a-muted);
+	font-size:   11px;
+	font-style:  italic;
+	margin:      10px 0 0;
+	text-align:  center;
 }
 
 /* =========================================================================
-   Color picker alignment
+   SAVE BAR
    ========================================================================= */
 
-.wp-color-result {
-	vertical-align: middle;
+.dpm-save-bar {
+	background:    var(--dpm-a-card);
+	border:        1.5px solid var(--dpm-a-border);
+	border-radius: var(--dpm-a-radius);
+	box-shadow:    var(--dpm-a-shadow);
+	display:       flex;
+	align-items:   center;
+	justify-content: space-between;
+	gap:           16px;
+	padding:       16px 22px;
+	margin-bottom: 28px;
+}
+
+.dpm-save-bar p {
+	color:     var(--dpm-a-muted);
+	font-size: 12px;
+	margin:    0;
+}
+
+.dpm-save-btn {
+	background:    var(--dpm-a-accent);
+	border:        none;
+	border-radius: 7px;
+	color:         #fff;
+	cursor:        pointer;
+	font-size:     14px;
+	font-weight:   600;
+	padding:       10px 28px;
+	transition:    background .15s, transform .1s;
+	white-space:   nowrap;
+}
+
+.dpm-save-btn:hover {
+	background: var(--dpm-a-accent-dark);
+}
+
+.dpm-save-btn:active {
+	transform: scale(.98);
 }
 
 /* =========================================================================
-   Shortcode reference box
+   SHORTCODE REFERENCE
    ========================================================================= */
 
 .dpm-shortcode-reference {
-	background:    #fff;
-	border:        1px solid #c3c4c7;
-	border-left:   4px solid #0073aa;
-	padding:       16px 20px 20px;
-	margin-top:    8px;
-	max-width:     800px;
+	background:    var(--dpm-a-card);
+	border:        1.5px solid var(--dpm-a-border);
+	border-radius: var(--dpm-a-radius);
+	box-shadow:    var(--dpm-a-shadow);
+	overflow:      hidden;
 }
 
-.dpm-shortcode-reference h2 {
-	margin-top: 0;
-	font-size:  16px;
+.dpm-shortcode-reference-header {
+	align-items:    center;
+	background:     var(--dpm-a-bg);
+	border-bottom:  1.5px solid var(--dpm-a-border);
+	display:        flex;
+	gap:            12px;
+	justify-content:space-between;
+	padding:        14px 20px;
+}
+
+.dpm-shortcode-reference-header h2 {
+	align-items: center;
+	color:       var(--dpm-a-text);
+	display:     flex;
+	font-size:   14px;
+	font-weight: 600;
+	gap:         8px;
+	margin:      0;
+	padding:     0;
+	border:      none;
+}
+
+.dpm-shortcode-reference-header h2 .dashicons {
+	color:     var(--dpm-a-accent);
+	font-size: 16px;
+	width:     16px;
+	height:    16px;
+}
+
+.dpm-copy-btn {
+	align-items:   center;
+	background:    var(--dpm-a-card);
+	border:        1.5px solid var(--dpm-a-border);
+	border-radius: 6px;
+	color:         var(--dpm-a-muted);
+	cursor:        pointer;
+	display:       inline-flex;
+	font-size:     12px;
+	gap:           5px;
+	padding:       5px 12px;
+	transition:    all .15s;
+}
+
+.dpm-copy-btn:hover {
+	background:   var(--dpm-a-accent-light);
+	border-color: var(--dpm-a-accent);
+	color:        var(--dpm-a-accent);
+}
+
+.dpm-copy-btn.copied {
+	background:   #f0fdf4;
+	border-color: var(--dpm-a-success);
+	color:        var(--dpm-a-success);
+}
+
+.dpm-copy-btn .dashicons {
+	font-size: 13px;
+	width:     13px;
+	height:    13px;
+}
+
+.dpm-shortcode-reference-body {
+	padding: 20px;
+}
+
+.dpm-shortcode-reference-body > p {
+	color:       var(--dpm-a-muted);
+	font-size:   13px;
+	margin:      0 0 14px;
 }
 
 .dpm-code {
-	background:    #f6f7f7;
-	border:        1px solid #e5e5e5;
-	border-radius: 3px;
-	color:         #333;
-	font-family:   Consolas, Monaco, "Courier New", monospace;
-	font-size:     13px;
-	line-height:   1.6;
+	background:    #1e1e2e;
+	border:        none;
+	border-radius: 8px;
+	color:         #cdd6f4;
+	font-family:   "JetBrains Mono", "Fira Code", Consolas, monospace;
+	font-size:     12.5px;
+	line-height:   1.75;
 	overflow-x:    auto;
-	padding:       12px 16px;
+	padding:       18px 20px;
 	white-space:   pre;
+	position:      relative;
 }
+
+.dpm-code .sc-tag   { color: #89b4fa; }
+.dpm-code .sc-attr  { color: #a6e3a1; }
+.dpm-code .sc-val   { color: #f9e2af; }
+.dpm-code .sc-sep   { color: #6c7086; }
