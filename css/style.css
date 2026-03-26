@@ -1,84 +1,261 @@
 /*
-* Plugin Styles
-*/
-#dpm-wrap .display-post-metadata {
-    width: 100%;
-    list-style: none;
-    border: 1px solid #e5e7ee;
-    border-left: 0;
-    padding: 0;
-    margin: 0;
-    margin-bottom: 20px;}
+ * Display Post Metadata — Frontend Styles
+ * Version: 2.0.0
+ *
+ * CSS custom properties (--dpm-*) are injected by the plugin from global
+ * settings. Individual shortcode/block instances may override them via
+ * inline style on their wrapper element.
+ */
 
+/* =========================================================================
+   CSS Custom Properties — defaults (overridden by plugin settings)
+   ========================================================================= */
 
-#dpm-wrap .display-post-metadata:after {
-    visibility: hidden;
-    display: block;
-    font-size: 0;
-    content: " ";
-    clear: both;
-    height: 0;
+.dpm-wrap {
+	--dpm-text-color:   #555555;
+	--dpm-icon-color:   #777777;
+	--dpm-bg-color:     transparent;
+	--dpm-border-color: #e5e7ee;
+	--dpm-font-size:    15px;
+	--dpm-icon-size:    18px;
+	--dpm-border-radius: 0px;
 }
 
-#dpm-wrap .display-post-metadata li {
-    float: left;
-    font-size: 16px;
-    font-weight: 300;
-    padding: 10px;
-    margin: 0;
-    border-left: 1px solid #e5e7ee; }
+/* =========================================================================
+   Base list reset
+   ========================================================================= */
 
-#dpm-wrap .display-post-metadata li.date-meta span {
-    display: inline-block; margin-top: 2px; }
-
-#dpm-wrap .display-post-metadata li img {
-    width: 22px;
-    margin-right: 5px;
-    vertical-align: middle; }
-
-#dpm-wrap .display-post-metadata li span {
-    vertical-align: middle; }
-
-#dpm-wrap ul.dpm-custom-fields {
-    list-style: none;
-    border-top: 1px solid #f1f1f1;
-    margin: 10px 0 20px 0;
-    padding: 0;
-    width: 100%;
+.dpm-wrap .display-post-metadata,
+.dpm-wrap .dpm-custom-fields {
+	list-style: none;
+	margin:     0;
+	padding:    0;
 }
 
-/* Custom fields styles */
-#dpm-wrap ul.dpm-custom-fields li {
-    color: #8B9293;
-    padding: 6px 5px 6px 10px;
-    border-bottom: 1px solid #eee;
-    margin: 0;
+/* =========================================================================
+   Inline SVG icons
+   ========================================================================= */
+
+.dpm-wrap .dpm-icon {
+	display:        inline-block;
+	width:          var(--dpm-icon-size);
+	height:         var(--dpm-icon-size);
+	min-width:      var(--dpm-icon-size);
+	margin-right:   6px;
+	vertical-align: middle;
+	color:          var(--dpm-icon-color);
+	flex-shrink:    0;
 }
 
-#dpm-wrap ul.dpm-custom-fields li:hover {
-    background-color: #f1f1f1;
+.dpm-wrap li span {
+	vertical-align: middle;
+	color:          var(--dpm-text-color);
+	font-size:      var(--dpm-font-size);
 }
 
-#dpm-wrap ul.dpm-custom-fields li strong {
-    display: inline-block;
-    font-weight: 500;
-    color: #394041;
-    margin-right: 10px;
+/* =========================================================================
+   Author avatar
+   ========================================================================= */
+
+.dpm-wrap .dpm-avatar {
+	border-radius: 50%;
+	margin-right:  6px;
+	vertical-align: middle;
+	flex-shrink:    0;
 }
 
-/* Responsive styles */
-@media only screen and (min-width: 495px) and (max-width: 515px) {
-    #dpm-wrap .display-post-metadata li { padding: 8px; }
+/* =========================================================================
+   Design Variation: Default
+   A horizontal bordered strip, responsive to a 2-col grid on tablets and
+   a single-col stack on phones.
+   ========================================================================= */
+
+.dpm-wrap.dpm-design-default .display-post-metadata {
+	display:         flex;
+	flex-wrap:       wrap;
+	width:           100%;
+	border:          1px solid var(--dpm-border-color);
+	border-left:     0;
+	margin-bottom:   20px;
+	background:      var(--dpm-bg-color);
+	border-radius:   var(--dpm-border-radius);
+	overflow:        hidden;
 }
 
-@media only screen and (min-width: 345px) and (max-width: 495px) {
-    #dpm-wrap .display-post-metadata li.date-meta span {
-        display: inline-block; margin-top: 0; }
-    #dpm-wrap .display-post-metadata li { border: 1px solid #e5e7ee; width: 50%; }
-    #dpm-wrap .display-post-metadata { border-left: 1px solid #e5e7ee; }
+.dpm-wrap.dpm-design-default .display-post-metadata li.dpm-item {
+	display:     flex;
+	align-items: center;
+	padding:     10px 14px;
+	border-left: 1px solid var(--dpm-border-color);
 }
 
-@media only screen and (max-width: 345px) {
-    #dpm-wrap .display-post-metadata li { width: 100%; border-bottom: 1px solid #e5e7ee; }
-    #dpm-wrap .display-post-metadata { border-bottom: 0; }
+/* Responsive — tablet */
+@media only screen and (max-width: 600px) {
+	.dpm-wrap.dpm-design-default .display-post-metadata li.dpm-item {
+		width:         50%;
+		border-bottom: 1px solid var(--dpm-border-color);
+	}
+	.dpm-wrap.dpm-design-default .display-post-metadata {
+		border-left: 1px solid var(--dpm-border-color);
+	}
+}
+
+/* Responsive — phone */
+@media only screen and (max-width: 360px) {
+	.dpm-wrap.dpm-design-default .display-post-metadata li.dpm-item {
+		width: 100%;
+	}
+}
+
+/* =========================================================================
+   Design Variation: Inline
+   Byline style — items separated by a mid-dot, no border boxes.
+   ========================================================================= */
+
+.dpm-wrap.dpm-design-inline .display-post-metadata {
+	display:       flex;
+	flex-wrap:     wrap;
+	align-items:   center;
+	gap:           0;
+	margin-bottom: 16px;
+	background:    var(--dpm-bg-color);
+}
+
+.dpm-wrap.dpm-design-inline .display-post-metadata li.dpm-item {
+	display:     flex;
+	align-items: center;
+	padding:     4px 10px;
+	position:    relative;
+}
+
+.dpm-wrap.dpm-design-inline .display-post-metadata li.dpm-item + li.dpm-item::before {
+	content:      '·';
+	position:     absolute;
+	left:         -2px;
+	color:        var(--dpm-border-color);
+	font-size:    1.4em;
+	line-height:  1;
+}
+
+@media only screen and (max-width: 480px) {
+	.dpm-wrap.dpm-design-inline .display-post-metadata {
+		flex-direction: column;
+		align-items:    flex-start;
+	}
+	.dpm-wrap.dpm-design-inline .display-post-metadata li.dpm-item + li.dpm-item::before {
+		display: none;
+	}
+}
+
+/* =========================================================================
+   Design Variation: Card
+   A vertical list inside a bordered card with a subtle shadow.
+   ========================================================================= */
+
+.dpm-wrap.dpm-design-card {
+	background:    var(--dpm-bg-color, #ffffff);
+	border:        1px solid var(--dpm-border-color);
+	border-radius: calc(var(--dpm-border-radius) + 4px);
+	box-shadow:    0 2px 10px rgba(0, 0, 0, 0.07);
+	padding:       16px 20px;
+	margin-bottom: 20px;
+	display:       inline-block;
+	min-width:     220px;
+}
+
+.dpm-wrap.dpm-design-card .display-post-metadata {
+	display:        flex;
+	flex-direction: column;
+	gap:            8px;
+}
+
+.dpm-wrap.dpm-design-card .display-post-metadata li.dpm-item {
+	display:     flex;
+	align-items: center;
+	padding:     6px 10px;
+	border-left: 3px solid var(--dpm-border-color);
+	border-radius: var(--dpm-border-radius);
+	transition:  border-color 0.15s ease;
+}
+
+.dpm-wrap.dpm-design-card .display-post-metadata li.dpm-item:hover {
+	border-left-color: var(--dpm-icon-color);
+}
+
+/* =========================================================================
+   Design Variation: Minimal
+   Pill / badge style — each item is its own rounded tag.
+   ========================================================================= */
+
+.dpm-wrap.dpm-design-minimal .display-post-metadata {
+	display:       flex;
+	flex-wrap:     wrap;
+	gap:           8px;
+	margin-bottom: 16px;
+}
+
+.dpm-wrap.dpm-design-minimal .display-post-metadata li.dpm-item {
+	display:       flex;
+	align-items:   center;
+	background:    var(--dpm-bg-color, #f5f6f7);
+	border:        1px solid var(--dpm-border-color);
+	border-radius: calc(var(--dpm-border-radius, 0px) + 20px);
+	padding:       5px 14px;
+	font-size:     calc(var(--dpm-font-size) * 0.875);
+	transition:    background 0.15s ease, border-color 0.15s ease;
+}
+
+.dpm-wrap.dpm-design-minimal .display-post-metadata li.dpm-item:hover {
+	background:    var(--dpm-border-color);
+}
+
+.dpm-wrap.dpm-design-minimal .display-post-metadata li.dpm-item span {
+	font-size: inherit;
+}
+
+/* =========================================================================
+   Custom Fields list (shared across all variations)
+   ========================================================================= */
+
+.dpm-wrap .dpm-custom-fields {
+	border-top:    1px solid var(--dpm-border-color);
+	margin-top:    8px;
+	margin-bottom: 20px;
+}
+
+.dpm-wrap .dpm-custom-fields li {
+	display:       flex;
+	align-items:   baseline;
+	padding:       6px 10px;
+	border-bottom: 1px solid var(--dpm-border-color, #eeeeee);
+	color:         var(--dpm-text-color);
+	font-size:     var(--dpm-font-size);
+	transition:    background 0.12s ease;
+}
+
+.dpm-wrap .dpm-custom-fields li:hover {
+	background: rgba(0, 0, 0, 0.03);
+}
+
+.dpm-wrap .dpm-custom-fields li strong.post-meta-key {
+	font-weight:  600;
+	margin-right: 8px;
+	color:        var(--dpm-text-color);
+	white-space:  nowrap;
+}
+
+.dpm-wrap .dpm-custom-fields li span.meta-value {
+	color: var(--dpm-text-color);
+}
+
+/* =========================================================================
+   Empty-block placeholder (shown in block editor when no elements picked)
+   ========================================================================= */
+
+.dpm-empty-block {
+	border:        2px dashed #ddd;
+	border-radius: 4px;
+	color:         #999;
+	padding:       16px;
+	text-align:    center;
 }

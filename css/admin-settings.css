@@ -1,0 +1,187 @@
+/*
+ * Display Post Metadata — Admin Settings Page Styles
+ * Version: 2.0.0
+ */
+
+/* =========================================================================
+   Page wrapper
+   ========================================================================= */
+
+.dpm-settings-wrap h1 {
+	margin-bottom: 4px;
+}
+
+.dpm-settings-wrap .dpm-tagline {
+	color:         #666;
+	margin-top:    0;
+	margin-bottom: 20px;
+}
+
+/* =========================================================================
+   Tabs
+   ========================================================================= */
+
+.dpm-tabs {
+	display:       flex;
+	gap:           0;
+	border-bottom: 1px solid #c3c4c7;
+	margin-bottom: 0;
+	margin-top:    16px;
+}
+
+.dpm-tab {
+	background:    #f0f0f1;
+	border:        1px solid #c3c4c7;
+	border-bottom: none;
+	border-radius: 3px 3px 0 0;
+	color:         #3c434a;
+	cursor:        pointer;
+	font-size:     14px;
+	margin-right:  4px;
+	padding:       8px 18px;
+	position:      relative;
+	bottom:        -1px;
+	transition:    background 0.12s ease, color 0.12s ease;
+}
+
+.dpm-tab:hover {
+	background: #fff;
+	color:      #0073aa;
+}
+
+.dpm-tab.active {
+	background:    #fff;
+	border-bottom: 1px solid #fff;
+	color:         #0073aa;
+	font-weight:   600;
+}
+
+/* =========================================================================
+   Tab panels
+   ========================================================================= */
+
+.dpm-tab-panel {
+	display:       none;
+	background:    #fff;
+	border:        1px solid #c3c4c7;
+	border-top:    none;
+	padding:       20px 24px;
+	margin-bottom: 20px;
+}
+
+.dpm-tab-panel.active {
+	display: block;
+}
+
+/* =========================================================================
+   Element checkboxes
+   ========================================================================= */
+
+.dpm-checkbox-label {
+	display:      inline-flex;
+	align-items:  center;
+	gap:          6px;
+	margin-right: 14px;
+	margin-bottom: 6px;
+	font-size:    14px;
+	cursor:       pointer;
+}
+
+.dpm-checkbox-label input[type="checkbox"] {
+	margin: 0;
+}
+
+/* =========================================================================
+   Style tab two-column layout
+   ========================================================================= */
+
+.dpm-style-layout {
+	display:   grid;
+	grid-template-columns: 1fr 1fr;
+	gap:       32px;
+	align-items: start;
+}
+
+@media (max-width: 900px) {
+	.dpm-style-layout {
+		grid-template-columns: 1fr;
+	}
+}
+
+.dpm-style-controls .form-table {
+	margin-top: 0;
+}
+
+.dpm-style-controls .form-table th {
+	width: 160px;
+}
+
+/* =========================================================================
+   Live preview panel
+   ========================================================================= */
+
+.dpm-style-preview {
+	position:   sticky;
+	top:        40px;
+}
+
+.dpm-style-preview h3 {
+	margin-top: 0;
+}
+
+#dpm-preview-container {
+	border:        1px solid #ddd;
+	border-radius: 4px;
+	padding:       16px;
+	min-height:    60px;
+	background:    #fafafa;
+}
+
+#dpm-preview-container .display-post-metadata {
+	flex-wrap: wrap;
+}
+
+.dpm-style-preview .description {
+	margin-top: 8px;
+	color:      #888;
+	font-style: italic;
+}
+
+/* =========================================================================
+   Color picker alignment
+   ========================================================================= */
+
+.wp-color-result {
+	vertical-align: middle;
+}
+
+/* =========================================================================
+   Shortcode reference box
+   ========================================================================= */
+
+.dpm-shortcode-reference {
+	background:    #fff;
+	border:        1px solid #c3c4c7;
+	border-left:   4px solid #0073aa;
+	padding:       16px 20px 20px;
+	margin-top:    8px;
+	max-width:     800px;
+}
+
+.dpm-shortcode-reference h2 {
+	margin-top: 0;
+	font-size:  16px;
+}
+
+.dpm-code {
+	background:    #f6f7f7;
+	border:        1px solid #e5e5e5;
+	border-radius: 3px;
+	color:         #333;
+	font-family:   Consolas, Monaco, "Courier New", monospace;
+	font-size:     13px;
+	line-height:   1.6;
+	overflow-x:    auto;
+	padding:       12px 16px;
+	white-space:   pre;
+}
