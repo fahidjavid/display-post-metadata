@@ -2,3 +2,4 @@ node_modules
 svn-ground
 svn
 /.DS_Store
+/.claude
